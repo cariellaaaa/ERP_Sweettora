@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\BillOfMaterialController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,4 +20,6 @@ Route::middleware('auth')->group(function(){
     Route::resource('product-categories', ProductCategoryController::class);
     Route::resource('units', UnitController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('bill-of-materials', BillOfMaterialController::class);
+
 });

@@ -104,8 +104,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
+                            <a href="{{ route('bill-of-materials.index') }}">
+                                <span data-key="t-categories">BOM</span>
                             </a>
                         </li>
                     </ul>
