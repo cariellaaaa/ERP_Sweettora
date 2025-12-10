@@ -29,4 +29,10 @@ class BillOfMaterial extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function items()
+    {
+        return $this->hasMany(BomItem::class);
+    }
+
 }

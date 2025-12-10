@@ -11,13 +11,13 @@ class BillOfMaterialController extends Controller
     public function index()
     {
         $boms = BillOfMaterial::with('product')->latest()->paginate(10);
-        return view('bom.index', compact('boms'));
+        return view('bill-of-materials.index', compact('boms'));
     }
 
     public function create()
     {
         $products = Product::all();
-        return view('bom.create', compact('products'));
+        return view('bill-of-materials.create', compact('products'));
     }
 
     public function store(Request $request)
@@ -26,36 +26,59 @@ class BillOfMaterialController extends Controller
             'product_id' => 'required',
             'reference' => 'required',
             'name' => 'required',
-            'quantity' => 'required|numeric|min:1',
-            'cost' => 'required|numeric',
+            'items' => 'required|array|min:1',
+            'items.*.product_id' => 'required',
+            'items.*.quantity' => 'required|numeric|min:1',
+            'items.*.cost' => 'required|numeric',
         ]);
 
-        BillOfMaterial::create([
+        // 1️⃣ Create BOM Header
+        $bom = BillOfMaterial::create([
             'product_id' => $request->product_id,
-            'company_id' => auth()->user()->company_id ?? 1, 
+            'company_id' => auth()->user()->company_id ?? 1,
             'user_id' => auth()->id(),
             'reference' => $request->reference,
             'name' => $request->name,
-            'quantity' => $request->quantity,
-            'cost' => $request->cost,
-            'total' => $request->quantity * $request->cost,
+            'quantity' => 1, // quantity sudah ditentukan per item
+            'cost' => 0, // dihitung total dari items
+            'total' => 0,
         ]);
 
-        return redirect()->route('bill-of-materials.index')->with('success', 'BOM successfully created.');
+        $totalCost = 0;
+
+        // 2️⃣ Create BOM Items (Rows)
+        foreach ($request->items as $item) {
+            $lineTotal = $item['quantity'] * $item['cost'];
+            $totalCost += $lineTotal;
+
+            $bom->items()->create([
+                'product_id' => $item['product_id'],
+                'quantity' => $item['quantity'],
+                'cost' => $item['cost'],
+                'total' => $lineTotal,
+            ]);
+        }
+
+        // 3️⃣ Update total cost di BOM Header
+        $bom->update([
+            'cost' => $totalCost,
+            'total' => $totalCost,
+        ]);
+
+        return redirect()->route('bill-of-materials.index')->with('success', 'BOM successfully created with components.');
     }
+
 
     public function edit(BillOfMaterial $bom)
     {
-        return view('bom.edit', compact('bom'));
+        return view('bill-of-materials.edit', compact('bom'));
     }
 
     public function show($id)
     {
-    $billOfMaterial = BillOfMaterial::findOrFail($id);
-
-    return view('bill-of-materials.show', compact('billOfMaterial'));
+        $bom = BillOfMaterial::with('product')->findOrFail($id);
+        return view('bill-of-materials.show', compact('bom'));
     }
-
 
     public function update(Request $request, BillOfMaterial $bom)
     {
