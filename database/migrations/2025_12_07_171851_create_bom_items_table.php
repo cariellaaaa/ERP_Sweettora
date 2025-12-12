@@ -6,25 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('bom_items', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('bill_of_material_id')->constrained()->cascadeOnDelete();
-        $table->foreignId('product_id')->constrained()->cascadeOnDelete();
-        $table->decimal('quantity', 10, 2);
-        $table->decimal('cost', 10, 2);
-        $table->decimal('total', 10, 2)->nullable();
-        $table->timestamps();
+            $table->id();
+
+            // FK manual (WAJIB untuk SQLite)
+            $table->unsignedBigInteger('bill_of_material_id');
+            $table->unsignedBigInteger('product_id');
+
+            $table->decimal('quantity', 10, 2);
+            $table->decimal('cost', 10, 2);
+            $table->decimal('total', 10, 2)->nullable();
+            $table->timestamps();
+
+            // Foreign key manual
+            $table->foreign('bill_of_material_id')
+                ->references('id')->on('bill_of_materials')
+                ->onDelete('cascade');
+
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('bom_items');

@@ -115,12 +115,9 @@
                         <i class="fas fa-industry"></i>
                         <span data-key="t-product">Manufacturing Orders</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
-                            </a>
-                        </li>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('manufacturing-order.index') }}">List Manufacturing Orders</a></li>
+                        <li><a href="{{ route('manufacturing-order.create') }}">Create MO</a></li>
                     </ul>
                 </li>
                 <li>

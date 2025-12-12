@@ -100,6 +100,13 @@ class BillOfMaterialController extends Controller
         return redirect()->route('bill-of-materials.index')->with('success', 'BOM updated successfully.');
     }
 
+    public function getBomItems($id)
+    {
+        $bom = BillOfMaterial::with('items.product.unit')->find($id);
+        return response()->json($bom->items);
+    }
+
+
     public function destroy(BillOfMaterial $bom)
     {
         $bom->delete();

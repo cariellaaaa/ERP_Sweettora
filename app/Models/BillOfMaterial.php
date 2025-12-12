@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BillOfMaterial extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
     protected $fillable = [
         'product_id',
@@ -19,6 +19,16 @@ class BillOfMaterial extends Model
         'total',
         'cost'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($bom) {
+            // Hapus semua item BOM sebelum menghapus BOM utamanya
+            $bom->items()->delete();
+        });
+    }
 
     public function product()
     {
@@ -34,5 +44,4 @@ class BillOfMaterial extends Model
     {
         return $this->hasMany(BomItem::class);
     }
-
 }
