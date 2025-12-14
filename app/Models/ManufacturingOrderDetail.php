@@ -30,4 +30,15 @@ class ManufacturingOrderDetail extends Model
     {
         return $this->belongsTo(ManufacturingOrder::class);
     }
+    public function getUnitStatusAttribute()
+    {
+        // quantity MO (berapa yang mau diproduksi)
+        $moQty = $this->manufacturingOrder->quantity;
+
+        // asumsi unit = stock tersedia (atau angka unit sekarang)
+        $availableUnit = $this->unit->quantity ?? 0;
+
+        return $availableUnit >= $moQty ? 'Available' : 'Unavailable';
+    }
+
 }

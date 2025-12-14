@@ -100,9 +100,10 @@
             <thead>
                 <tr>
                     <th>Product</th>
-                    <th>Unit</th>
+                    <th>Stock</th>
                     <th>To Consume</th>
                     <th>Consumed</th>
+                    <th>Status Stock</th>
                 </tr>
             </thead>
             <tbody>
@@ -112,6 +113,13 @@
                     <td>{{ $d->unit->name ?? '-' }}</td>
                     <td>{{ $d->requirements }}</td>
                     <td>{{ $d->consumed }}</td>
+                    <td>
+                        @if ($d->product->stock >= $d->requirements)
+                            <span class="badge bg-success">Available</span>
+                        @else
+                            <span class="badge bg-danger">Unavailable</span>
+                        @endif
+                    </td>
                 </tr>
                 @empty
                 <tr>
