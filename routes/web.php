@@ -1,14 +1,18 @@
 <?php
 
+use \App\Http\Controllers\InventoriesController;
+use \App\Http\Controllers\StockAdjustmentsController;
+use \App\Http\Controllers\WarehousesController;
 use App\Http\Controllers\BillOfMaterialController;
-use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ReceiveItemsController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -29,5 +33,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('bill-of-materials', BillOfMaterialController::class);
     Route::resource('vendors', VendorController::class);
     Route::resource('purchase-orders', PurchaseController::class);
-    Route::resource('inventories', InventoryController::class);
+    Route::resource('receive-items', ReceiveItemsController::class);
+
+    Route::resource('warehouses', WarehousesController::class);
+    Route::get('/api/cities/{provinceId}', [WarehousesController::class, 'getCities'])->name('api.cities');
+    Route::resource('inventories', InventoriesController::class);
+    Route::resource('stock-adjustments', StockAdjustmentsController::class);
 });

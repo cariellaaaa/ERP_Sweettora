@@ -76,7 +76,7 @@
                         <span data-key="t-product">Purchase</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                         <li>
+                        <li>
                             <a href="{{ route('purchase-orders.index') }}">
                                 <span data-key="t-vendor">Purchase Orders</span>
                             </a>
@@ -90,8 +90,49 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
+                            <a href="{{ route('receive-items.index') }}">
+                                <span data-key="t-categories">Receive Items</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-title" data-key="t-menu">Inventory</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fas fa-warehouse"></i>
+                        <span data-key="t-warehouses">Warehouses</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('warehouses.index') }}">
+                                <span data-key="t-warehouses">Warehouses</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fas fa-cubes"></i>
+                        <span data-key="t-inventories">Inventories</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
                             <a href="{{ route('inventories.index') }}">
-                                <span data-key="t-categories">Inventory</span>
+                                <span data-key="t-stock">Stock</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span data-key="t-adjustments">Stock Adjustments</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('stock-adjustments.index') }}">
+                                <span data-key="t-adjustments">Adjustments</span>
                             </a>
                         </li>
                     </ul>
