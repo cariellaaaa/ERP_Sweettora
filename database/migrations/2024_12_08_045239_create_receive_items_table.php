@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('purchase_order_id')->index();
             $table->unsignedBigInteger('user_id')->index();
             $table->string('code')->unique()->index();
-            $table->date('trx_date')->default('now');
+            $table->date('trx_date')->default(now());
             $table->text('description')->nullable();
             $table->double('total');
             $table->enum('status', ['Draft', 'Quotation', 'Confirmed', 'Done'])->default('Draft');

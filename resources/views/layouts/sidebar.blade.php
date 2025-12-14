@@ -15,7 +15,7 @@
                     </a>
                 </li>
 
-                
+
                 <li class="menu-title" data-key="t-menu">Master Data</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
@@ -49,7 +49,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
+                            <a href="{{ route('vendors.index') }}">
                                 <span data-key="t-vendor">Vendors</span>
                             </a>
                         </li>
@@ -69,15 +69,16 @@
                 </li>
 
                 <li class="menu-title" data-key="t-menu">Purchasing</li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="fas fa-shopping-cart"></i>
-                        <span data-key="t-product">Purchase Orders</span>
+                        <span data-key="t-product">Purchase</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
+                            <a href="{{ route('purchase-orders.index') }}">
+                                <span data-key="t-vendor">Purchase Orders</span>
                             </a>
                         </li>
                     </ul>
@@ -89,8 +90,49 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
+                            <a href="{{ route('receive-items.index') }}">
+                                <span data-key="t-categories">Receive Items</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-title" data-key="t-menu">Inventory</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fas fa-warehouse"></i>
+                        <span data-key="t-warehouses">Warehouses</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('warehouses.index') }}">
+                                <span data-key="t-warehouses">Warehouses</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fas fa-cubes"></i>
+                        <span data-key="t-inventories">Inventories</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('inventories.index') }}">
+                                <span data-key="t-stock">Stock</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span data-key="t-adjustments">Stock Adjustments</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('stock-adjustments.index') }}">
+                                <span data-key="t-adjustments">Adjustments</span>
                             </a>
                         </li>
                     </ul>
