@@ -77,19 +77,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                          <li>
-                            <a href="apps-calendar.html">
+                            <a href="{{ route('purchase-orders.index') }}">
                                 <span data-key="t-vendor">Purchase Orders</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="apps-chat.html">
-                                <span data-key="t-customers">Purchase Returns</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Purchase Receipts</span>
                             </a>
                         </li>
                     </ul>
@@ -101,8 +90,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
+                            <a href="{{ route('inventories.index') }}">
+                                <span data-key="t-categories">Inventory</span>
                             </a>
                         </li>
                     </ul>
