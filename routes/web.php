@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\BillOfMaterialController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
-use App\Http\Controllers\BillOfMaterialController;
+use App\Http\Controllers\VendorController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -21,5 +25,5 @@ Route::middleware('auth')->group(function(){
     Route::resource('units', UnitController::class);
     Route::resource('products', ProductController::class);
     Route::resource('bill-of-materials', BillOfMaterialController::class);
-
+    Route::resource('vendors', VendorController::class);
 });

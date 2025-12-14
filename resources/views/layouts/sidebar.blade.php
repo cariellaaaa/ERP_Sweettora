@@ -15,7 +15,7 @@
                     </a>
                 </li>
 
-                
+
                 <li class="menu-title" data-key="t-menu">Master Data</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
@@ -49,7 +49,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
+                            <a href="{{ route('vendors.index') }}">
                                 <span data-key="t-vendor">Vendors</span>
                             </a>
                         </li>
@@ -69,15 +69,27 @@
                 </li>
 
                 <li class="menu-title" data-key="t-menu">Purchasing</li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="fas fa-shopping-cart"></i>
-                        <span data-key="t-product">Purchase Orders</span>
+                        <span data-key="t-product">Purchase</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                         <li>
+                            <a href="apps-calendar.html">
+                                <span data-key="t-vendor">Purchase Orders</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="apps-chat.html">
+                                <span data-key="t-customers">Purchase Returns</span>
+                            </a>
+                        </li>
                         <li>
                             <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
+                                <span data-key="t-categories">Purchase Receipts</span>
                             </a>
                         </li>
                     </ul>
