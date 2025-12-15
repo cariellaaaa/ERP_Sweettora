@@ -21,8 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useBootstrap();
-        Schema::enableForeignKeyConstraints();
+        // Paginator::useBootstrap();
+        // Schema::enableForeignKeyConstraints();
 
     }
 }

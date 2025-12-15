@@ -3,7 +3,7 @@
 use \App\Http\Controllers\InventoriesController;
 use \App\Http\Controllers\StockAdjustmentsController;
 use \App\Http\Controllers\WarehousesController;
-use App\Http\Controllers\BillOfMaterialController;
+// use App\Http\Controllers\BillOfMaterialController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
