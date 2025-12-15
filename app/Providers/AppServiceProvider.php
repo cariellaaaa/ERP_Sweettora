@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Inventory;
+use App\Observers\InventoryObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
