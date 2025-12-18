@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Inventory;
+use App\Observers\InventoryObserver;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useBootstrap();
+        // Paginator::useBootstrap();
+        // Schema::enableForeignKeyConstraints();
+
+        // Register Inventory Observer to automatically update product stock
+        Inventory::observe(InventoryObserver::class);
     }
 }
