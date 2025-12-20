@@ -5,6 +5,7 @@ use \App\Http\Controllers\StockAdjustmentsController;
 use \App\Http\Controllers\WarehousesController;
 // use App\Http\Controllers\BillOfMaterialController;
 use App\Http\Controllers\BillOfMaterialController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ManufacturingOrderController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
@@ -44,4 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/api/cities/{provinceId}', [WarehousesController::class, 'getCities'])->name('api.cities');
     Route::resource('inventories', InventoriesController::class);
     Route::resource('stock-adjustments', StockAdjustmentsController::class);
+    
+    Route::resource('employees', EmployeeController::class);
 });
