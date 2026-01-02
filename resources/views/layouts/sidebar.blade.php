@@ -67,6 +67,12 @@
                         </li> --}}
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('employees.index') }}">
+                        <i class="fas fa-users"></i>
+                        <span data-key="t-employees">Employees</span>
+                    </a>
+                </li>
 
                 <li class="menu-title" data-key="t-menu">Purchasing</li>
 

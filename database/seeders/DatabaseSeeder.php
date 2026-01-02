@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            PermissionsSeeder::class
+            PermissionsSeeder::class,
         ]);
 
         $admin = User::create([
             'name' => 'Superadmin',
             'email' => 'superadmin@email.com',
-            'password' => Hash::make('123456')
+            'password' => Hash::make('123456'),
         ]);
 
         $role = Role::where('name', 'admin')->value('id');
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $manager = User::create([
             'name' => 'Manager',
             'email' => 'manager@email.com',
-            'password' => Hash::make('123456')
+            'password' => Hash::make('123456'),
         ]);
 
         $managerRole = Role::where('name', 'manager')->value('id');
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         $staff = User::create([
             'name' => 'Staff',
             'email' => 'staff@email.com',
-            'password' => Hash::make('123456')
+            'password' => Hash::make('123456'),
         ]);
 
         $staffRole = Role::where('name', 'staff')->value('id');
