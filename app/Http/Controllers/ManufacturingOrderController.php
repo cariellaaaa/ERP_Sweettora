@@ -7,6 +7,7 @@ use App\Models\BomItem;
 use App\Models\ManufacturingOrder;
 use App\Models\ManufacturingOrderDetail;
 use App\Models\Product;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
 class ManufacturingOrderController extends Controller
@@ -82,7 +83,12 @@ class ManufacturingOrderController extends Controller
             'user',
         ])->findOrFail($id);
 
-        return view('manufacturing_order.show', compact('mo'));
+        // ambil stock inventory per product
+        $stocks = Inventory::selectRaw('product_id, SUM(available) as stock')
+            ->groupBy('product_id')
+            ->pluck('stock', 'product_id');
+
+        return view('manufacturing_order.show', compact('mo', 'stocks'));
     }
 
 }

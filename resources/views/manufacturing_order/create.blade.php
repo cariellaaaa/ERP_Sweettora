@@ -153,7 +153,7 @@ document.querySelector('select[name="bill_of_material_id"]').addEventListener('c
                 table.innerHTML += `
                     <tr>
                         <td>${item.product.name}</td>
-                        <td>${item.product.unit ? item.product.unit.name : '-'}</td>
+                        <td>${ $stocks[$d->product_id] ?? 0 }</td>
                         <td>${item.quantity}</td>
                         <td>0</td>
                     </tr>

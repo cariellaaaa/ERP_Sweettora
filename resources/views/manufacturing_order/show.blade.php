@@ -110,11 +110,11 @@
                 @forelse ($mo->details as $d)
                 <tr>
                     <td>{{ $d->product->name }}</td>
-                    <td>{{ $d->unit->name ?? '-' }}</td>
+                    <td>{{ $stocks[$d->product_id] ?? 0 }}</td>
                     <td>{{ $d->requirements }}</td>
                     <td>{{ $d->consumed }}</td>
                     <td>
-                        @if ($d->product->stock >= $d->requirements)
+                        @if ($stocks[$d->product_id] >= $d->requirements)
                             <span class="badge bg-success">Available</span>
                         @else
                             <span class="badge bg-danger">Unavailable</span>

@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('delivery_orders', function (Blueprint $table) {
+         Schema::create('delivery_orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('sales_order_id')->constrained();
+            $table->string('do_number')->unique();
+            $table->date('delivery_date');
+            $table->string('status')->default('pending'); // pending, shipped
             $table->timestamps();
         });
+
     }
 
     /**
