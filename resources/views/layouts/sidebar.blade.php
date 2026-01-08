@@ -173,31 +173,40 @@
                         <i class="fas fa-receipt"></i>
                         <span data-key="t-bills">Bills</span>
                     </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('bills.index') }}">List Bills</a></li>
+                        {{-- - <li><a href="{{ route('bills.create') }}">Create Bill</a></li>--}}
+                    </ul>
                 </li>
 
                 <li class="menu-title" data-key="t-menu">Sales</li>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
+                    <a href="javascript:void(0);" class="has-arrow">
                         <i class="fas fa-store"></i>
                         <span data-key="t-sales-orders">Sales Orders</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
+                           <a href="{{ route('sales-orders.index') }}">
+                                <span data-key="t-list-so">List Sales Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('sales-orders.create') }}">
+                                <span data-key="t-create-so">Create Sales Order</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
+                    <a href="javascript:void(0);" class="has-arrow">
                         <i class="fas fa-shipping-fast"></i>
-                        <span data-key="t-product">Delivery Orders</span>
+                        <span data-key="t-delivery-orders">Delivery Orders</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar.html">
-                                <span data-key="t-categories">Categories</span>
+                            <a href="{{ route('delivery-orders.index') }}">
+                                <span data-key="t-list-do">List Delivery Orders</span>
                             </a>
                         </li>
                     </ul>

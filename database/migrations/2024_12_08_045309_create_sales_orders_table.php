@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('sales_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('so_number')->unique();
+            $table->date('order_date');
+            $table->string('customer_name');
+            $table->string('status')->default('draft'); // draft, confirmed, delivered
             $table->timestamps();
         });
     }

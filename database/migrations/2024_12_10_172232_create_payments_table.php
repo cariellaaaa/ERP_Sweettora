@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('purchase_order_id')->nullable();
-            $table->timestamps();
+        Schema::table('payments', function (Blueprint $table) {
+            $table->unsignedBigInteger('bill_id')->nullable();
+            $table->decimal('amount', 15, 2);
+            $table->date('payment_date');
+            $table->string('method')->nullable();
+
+            $table->foreign('bill_id')
+                ->references('id')
+                ->on('bills');
         });
     }
 

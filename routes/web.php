@@ -10,10 +10,14 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ReceiveItemsController;
+use App\Http\Controllers\SalesOrderController;
+use App\Http\Controllers\DeliveryOrderController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\BillController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -44,4 +48,21 @@ Route::middleware('auth')->group(function () {
     Route::resource('stock-adjustments', StockAdjustmentsController::class);
     
     Route::resource('employees', EmployeeController::class);
+
+    Route::resource('sales-orders', SalesOrderController::class);
+    Route::resource('delivery-orders', DeliveryOrderController::class);
+    Route::post('delivery-orders/{id}/deliver', [DeliveryOrderController::class, 'deliver'])
+    ->name('delivery-orders.deliver');
+    Route::get('/delivery-orders/{deliveryOrder}', [DeliveryOrderController::class, 'show'])
+    ->name('delivery-orders.show');
+
+
+
+    Route::resource('bills', BillController::class)->only(['index', 'show']);
+    Route::get('delivery-orders/{id}/bill/create', [BillController::class, 'create']
+    )->name('bills.create');
+    Route::post('delivery-orders/{id}/bill',[BillController::class, 'store']
+    )->name('bills.store');
+
+
 });
